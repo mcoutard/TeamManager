@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">TeamManager</string>
+    <string name="name">Name</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="age">Age</string>
+    <string name="degree">Degree</string>
+    <string name="create_player">Create Player</string>
+    <string name="team_name">Team Name</string>
+    <string name="sport_name">Sport Name</string>
+    <string name="team_leader">Team Leader</string>
+    <string name="cancel_button">CANCEL</string>
+    <string name="valid_button">VALID</string>
+    <string name="add_team">Add Team</string>
+    <string name="training_day">Training Day</string>
+    <string name="training_hour">Training Hour</string>
+    <string name="spinner_title">spinner_title</string>
+    <string name="back_button">BACK</string>
+    <string name="add_player">Add Player</string>
+    <string name="contact_leader_button">Contact Leader</string>
+    <string name="TeamName2Points">Name : </string>
+    <string name="TeamSport2Points">Sport : </string>
+    <string name="TeamLeader2Points">Leader : </string>
+    <string name="TrainingDay2Points">Training Day : </string>
+    <string name="TrainingHour2Points">Training Hour : </string>
+    <string name="playerName">Player Name</string>
+    <string name="playerPosition">Player Position</string>
+    <string name="playerMailAdress">Mail Adress</string>
+    <string name="playerPhone">Phone Number</string>
+    <string-array name="days_of_the_week">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wenesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+</resources>
