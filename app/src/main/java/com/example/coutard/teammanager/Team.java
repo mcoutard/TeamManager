@@ -23,7 +23,6 @@ public class Team implements Parcelable {
     public Team(){
         players = new ArrayList<Player>() ;
         addPlayer(new Player(team_leader));
-        int i =0;
     }
 
 
@@ -38,22 +37,6 @@ public class Team implements Parcelable {
         addPlayer(new Player(team_leader));
     }
 
-    public Team(Parcel in) {
-
-        this();
-
-        team_name = in.readString();
-        sport_name = in.readString();
-       team_leader= in.readString();
-        training_day = in.readString();
-        training_hour = in.readString();
-        System.out.println("in Team Parcel" +in.toString());
-        //ArrayList <Player> tempPlayers = new ArrayList<Player>();
-        System.out.println("in Team 2" +players);
-        in.readTypedList(players,Player.CREATOR);
-        //players = in.createTypedArrayList(Player.CREATOR);
-    }
-
     public List<Player> getTeam(){
         if(players == null) players = new ArrayList<>();
         return players;
@@ -62,19 +45,6 @@ public class Team implements Parcelable {
     public void addPlayer(Player player){
         getTeam().add(player);
     }
-
-    public static final Creator<Team> CREATOR = new Creator<Team>() {
-        @Override
-        public Team createFromParcel(Parcel in) {
-            return new Team(in);
-        }
-
-        @Override
-        public Team[] newArray(int size) {
-            return new Team[size];
-        }
-    };
-
 
 
     public String getTeamName() {
@@ -105,6 +75,7 @@ public class Team implements Parcelable {
                 '}';
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -112,15 +83,33 @@ public class Team implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
-        dest.writeString(team_name);
-        dest.writeString(sport_name);
-        dest.writeString(team_leader);
-        dest.writeString(training_day);
-        dest.writeString(training_hour);
-        System.out.println("in Team 3" +players);
-        dest.writeTypedList(players);
-        //System.out.println("in Team 3" +dest);
+        dest.writeString(this.team_name);
+        dest.writeString(this.sport_name);
+        dest.writeString(this.team_leader);
+        dest.writeString(this.training_day);
+        dest.writeString(this.training_hour);
+        dest.writeTypedList(this.players);
     }
+
+    protected Team(Parcel in) {
+        this.team_name = in.readString();
+        this.sport_name = in.readString();
+        this.team_leader = in.readString();
+        this.training_day = in.readString();
+        this.training_hour = in.readString();
+        this.players = in.createTypedArrayList(Player.CREATOR);
+    }
+
+    public static final Creator<Team> CREATOR = new Creator<Team>() {
+        @Override
+        public Team createFromParcel(Parcel source) {
+            return new Team(source);
+        }
+
+        @Override
+        public Team[] newArray(int size) {
+            return new Team[size];
+        }
+    };
 }
 

@@ -28,24 +28,6 @@ public class Player implements Parcelable {
         this.playerPhone = _playerPhone;
     }
 
-    protected Player(Parcel in) {
-        playerName = in.readString();
-        playerPosition = in.readString();
-        playerMail = in.readString();
-        playerPhone = in.readString();
-    }
-
-    public static final Parcelable.Creator<Player> CREATOR = new Parcelable.Creator<Player>() {
-        @Override
-        public Player createFromParcel(Parcel in) {
-            return new Player(in);
-        }
-
-        @Override
-        public Player[] newArray(int size) {
-            return new Player[size];
-        }
-    };
 
 
     @Override
@@ -58,18 +40,6 @@ public class Player implements Parcelable {
                 '}';
     }
 
-
-    public int describeContents() {
-        return 0;
-    }
-
-
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(playerName);
-        dest.writeString(playerPosition);
-        dest.writeString(playerMail);
-        dest.writeString(playerPhone);
-    }
 
     public String getPlayerName() {
         if(playerName != null)
@@ -98,5 +68,37 @@ public class Player implements Parcelable {
         else
             return "";
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.playerName);
+        dest.writeString(this.playerPosition);
+        dest.writeString(this.playerMail);
+        dest.writeString(this.playerPhone);
+    }
+
+    protected Player(Parcel in) {
+        this.playerName = in.readString();
+        this.playerPosition = in.readString();
+        this.playerMail = in.readString();
+        this.playerPhone = in.readString();
+    }
+
+    public static final Creator<Player> CREATOR = new Creator<Player>() {
+        @Override
+        public Player createFromParcel(Parcel source) {
+            return new Player(source);
+        }
+
+        @Override
+        public Player[] newArray(int size) {
+            return new Player[size];
+        }
+    };
 }
 

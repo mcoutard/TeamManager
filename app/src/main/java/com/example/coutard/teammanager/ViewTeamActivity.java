@@ -62,10 +62,8 @@ public class ViewTeamActivity extends AppCompatActivity {
         trainingDay_ui = (TextView) findViewById(R.id.textViewTrainingDay);
         trainingHour_ui = (TextView) findViewById(R.id.textViewTrainingHour);
 
-       // ListView playersList = (ListView) findViewById(R.id.playersList);
-        //System.out.println(team);
-       // adapter = new PlayerAdapter(this, team.getTeam());
-       // playersList.setAdapter(adapter);
+        ListView playersList = (ListView) findViewById(R.id.playersList);
+
 
         if (getIntent().hasExtra("team")) {
             Team team = getIntent().getParcelableExtra("team");
@@ -76,6 +74,10 @@ public class ViewTeamActivity extends AppCompatActivity {
             teamLeader_ui.setText(team.getTeamLeader());
             trainingDay_ui.setText(team.getTrainingDay());
             trainingHour_ui.setText(team.getTrainingHour());
+
+            this.team = team;
+            adapter = new PlayerAdapter(this, this.team.getTeam());
+            playersList.setAdapter(adapter);
         }
 
 
@@ -103,8 +105,8 @@ public class ViewTeamActivity extends AppCompatActivity {
                 LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.player_item, null);
                 holder = new ViewTeamActivity.PlayerAdapter.PlayerHolder();
-                holder.playerName = (TextView) convertView.findViewById(R.id.team_name);
-                holder.playerPosition = (TextView) convertView.findViewById(R.id.sport_name);
+                holder.playerName = (TextView) convertView.findViewById(R.id.player_name);
+                holder.playerPosition = (TextView) convertView.findViewById(R.id.player_position    );
                 convertView.setTag(holder);
             } else {
                 holder = (ViewTeamActivity.PlayerAdapter.PlayerHolder) convertView.getTag();
