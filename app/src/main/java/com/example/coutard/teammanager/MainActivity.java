@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -151,11 +152,13 @@ public class MainActivity extends AppCompatActivity {
             String teamLeader = data.getStringExtra("teamLeader");
             String trainingDay = data.getStringExtra("trainingDay");
             String trainingHour = data.getStringExtra("trainingHour");
-            Team team = new Team(teamName, sportName, teamLeader, trainingDay, trainingHour);
+            List<Player> players = data.getParcelableArrayListExtra("players");
+            Team team = new Team(teamName, sportName, teamLeader, trainingDay, trainingHour, players);
             teams.addTeam(team);
             adapter.notifyDataSetChanged();
             Log.d ("MainActivity", team.toString());
         }
+
     }
 
     @Override

@@ -37,6 +37,17 @@ public class Team implements Parcelable {
         addPlayer(new Player(team_leader));
     }
 
+    protected Team(String team_name, String sport_name, String team_leader, String training_day, String training_hour, List<Player> players) {
+
+        this.team_name = team_name;
+        this.sport_name = sport_name;
+        this.team_leader = team_leader;
+        this.training_day = training_day;
+        this.training_hour = training_hour;
+        this.players = players;
+
+    }
+
     public List<Player> getTeam(){
         if(players == null) players = new ArrayList<>();
         return players;

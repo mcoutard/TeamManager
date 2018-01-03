@@ -3,6 +3,7 @@ package com.example.coutard.teammanager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -166,5 +169,27 @@ public class ViewTeamActivity extends AppCompatActivity {
         setResult(RESULT_CANCELED);
         finish();
     }
+
+    public void onValid (View v){
+
+        String teamName = teamName_ui.getText().toString();
+        String sportName = sportName_ui.getText().toString();
+        String teamLeader = teamLeader_ui.getText().toString();
+        String trainingDay = trainingDay_ui.getText().toString();
+        String trainingHour = trainingHour_ui.getText().toString();
+        List<Player> players = team.getTeam();
+
+        Intent intent = getIntent();
+        intent.putExtra("teamName", teamName);
+        intent.putExtra("sportName", sportName);
+        intent.putExtra("teamLeader", teamLeader);
+        intent.putExtra("trainingDay", trainingDay);
+        intent.putExtra("trainingHour", trainingHour);
+        intent.putExtra("players", (Serializable) players);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
+
 
 }

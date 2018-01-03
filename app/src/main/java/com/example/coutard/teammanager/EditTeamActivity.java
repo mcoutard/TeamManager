@@ -51,10 +51,10 @@ public class EditTeamActivity extends AppCompatActivity {
         intent.putExtra("sportName", sportName);
         intent.putExtra("teamLeader", teamLeader);
         intent.putExtra("trainingDay", trainingDay);
-        intent.putExtra("trainingHourt", trainingHour);
-        setResult(RESULT_OK, intent);
-        finish();
-    }
+        intent.putExtra("trainingHour", trainingHour);
+    setResult(RESULT_OK, intent);
+    finish();
+}
 
     public void onCancel (View v) {
         setResult(RESULT_CANCELED);
