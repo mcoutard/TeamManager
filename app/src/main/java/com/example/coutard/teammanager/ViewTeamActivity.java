@@ -30,6 +30,7 @@ public class ViewTeamActivity extends AppCompatActivity {
 
 
     private static final int PLAYER_ADD = 1;
+    private static final int CONTACT_TEAM = 1;
 
 
     private TextView teamName_ui;
@@ -48,14 +49,19 @@ public class ViewTeamActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_team);
 
-        System.out.println("qui va la");
-       // team = new Team();
-
         Button add = (Button) findViewById(R.id.add_player_button);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickAddPlayer(v);
+            }
+        });
+
+        Button contact_team = (Button) findViewById(R.id.contact_team_button);
+        contact_team.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickContactTeam(v);
             }
         });
 
@@ -126,6 +132,12 @@ public class ViewTeamActivity extends AppCompatActivity {
         startActivityForResult(intent, PLAYER_ADD);
     }
 
+    public void onClickContactTeam(View v){
+        Intent intent = new Intent(this, EditSmsActivity.class);
+        intent.putExtra("team",team);
+        startActivityForResult(intent, CONTACT_TEAM);
+    }
+
 
 
 
@@ -143,22 +155,15 @@ public class ViewTeamActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
             Log.d ("ViewTeamActivity", team.toString());
         }
-        /*
-        if (requestCode == TEAM_VIEW && resultCode == RESULT_OK) {
-            long id = data.getLongExtra("id", -1);
-            teams.getTeams().remove((int) id);
+
+        if (requestCode == CONTACT_TEAM && resultCode == RESULT_OK) {
+
 //HM PARCELABLE idem que pour ADD
-            String teamName = data.getStringExtra("teamName");
-            String sportName = data.getStringExtra("sportName");
-            String teamLeader = data.getStringExtra("teamLeader");
-            String trainingDay = data.getStringExtra("trainingDay");
-            String trainingHour = data.getStringExtra("trainingHour");
-            Team team = new Team(teamName, sportName, teamLeader, trainingDay, trainingHour);
-            teams.addTeam(team);
+
             adapter.notifyDataSetChanged();
             Log.d ("MainActivity", team.toString());
         }
-*/
+
     }
     @Override
     public void onBackPressed() {
@@ -189,6 +194,8 @@ public class ViewTeamActivity extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
+
+
 
 
 

@@ -17,7 +17,6 @@
     <string name="spinner_title">spinner_title</string>
     <string name="back_button">BACK</string>
     <string name="add_player">Add Player</string>
-    <string name="contact_leader_button">Contact Leader</string>
     <string name="TeamName2Points">Name : </string>
     <string name="TeamSport2Points">Sport : </string>
     <string name="TeamLeader2Points">Leader : </string>
@@ -27,6 +26,9 @@
     <string name="playerPosition">Player Position</string>
     <string name="playerMailAdress">Mail Adress</string>
     <string name="playerPhone">Phone Number</string>
+    <string name="contact_team_button">Contact Team</string>
+    <string name="send">send</string>
+    <string name="Message_text_hint">Write your message</string>
     <string-array name="days_of_the_week">
         <item>Monday</item>
         <item>Tuesday</item>

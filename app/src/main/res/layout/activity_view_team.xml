@@ -170,10 +170,10 @@
 
 
         <Button
-            android:id="@+id/contact_leader_button"
+            android:id="@+id/contact_team_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/contact_leader_button" />
+            android:text="@string/contact_team_button" />
 
         <LinearLayout
             android:layout_width="match_parent"
