@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +31,9 @@ public class ViewTeamActivity extends AppCompatActivity {
 
 
     private static final int PLAYER_ADD = 1;
-    private static final int CONTACT_TEAM = 1;
+    private static final int CONTACT_TEAM = 2;
+    private static final int PLAYER_EDIT= 3;
+
 
 
     private TextView teamName_ui;
@@ -71,8 +74,33 @@ public class ViewTeamActivity extends AppCompatActivity {
         trainingDay_ui = (TextView) findViewById(R.id.textViewTrainingDay);
         trainingHour_ui = (TextView) findViewById(R.id.textViewTrainingHour);
 
-        ListView playersList = (ListView) findViewById(R.id.playersList);
+        final ListView playersList = (ListView) findViewById(R.id.playersList);
 
+        playersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("ici");
+                Intent intent = new Intent(ViewTeamActivity.this, EditPlayerActivity.class);
+                intent.putExtra("player", team.getTeam().get((int) id));
+                intent.putExtra("id", id);
+                startActivityForResult(intent, PLAYER_EDIT);
+            }
+        });
+
+        playersList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, final View view, int position, final long id) {
+                view.animate().setDuration(2000).alpha(0).withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        team.getTeam().remove((int) id);
+                        adapter.notifyDataSetChanged();
+                        view.setAlpha(1);
+                    }
+                });
+                return true;
+            }
+        });
 
         if (getIntent().hasExtra("team")) {
             Team team = getIntent().getParcelableExtra("team");
@@ -144,7 +172,6 @@ public class ViewTeamActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PLAYER_ADD && resultCode == RESULT_OK) {
-//HM PARCELABLE maintenant si EditContact envoye un contact dans l'intent on peut faire Contact c = data.getParcelable ("contact");
             String playerName = data.getStringExtra("playerName");
             String playerPosition = data.getStringExtra("playerPosition");
             String playerMail = data.getStringExtra("playerMail");
@@ -157,11 +184,22 @@ public class ViewTeamActivity extends AppCompatActivity {
         }
 
         if (requestCode == CONTACT_TEAM && resultCode == RESULT_OK) {
-
-//HM PARCELABLE idem que pour ADD
-
             adapter.notifyDataSetChanged();
             Log.d ("MainActivity", team.toString());
+        }
+
+        if (requestCode == PLAYER_EDIT && resultCode == RESULT_OK){
+            long id = data.getLongExtra("id", -1);
+            team.getTeam().remove((int) id);
+            String playerName = data.getStringExtra("playerName");
+            String playerPosition = data.getStringExtra("playerPosition");
+            String playerMail = data.getStringExtra("playerMail");
+            String playerPhone = data.getStringExtra("playerPhone");
+            Player player = new Player(playerName, playerPosition, playerMail, playerPhone);
+            team.addPlayer(player);
+            System.out.println(team.toString());
+            adapter.notifyDataSetChanged();
+            Log.d ("ViewTeamActivity", team.toString());
         }
 
     }

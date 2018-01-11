@@ -30,6 +30,16 @@ public class EditPlayerActivity extends AppCompatActivity {
         playerMail_ui = (EditText) findViewById(R.id.EditPlayerMailAdress);
         playerPhone_ui = (EditText) findViewById(R.id.EditPlayerPhone);
 
+        if (getIntent().hasExtra("player")) {
+            Player player = getIntent().getParcelableExtra("player");
+
+            playerName_ui.setText(player.getPlayerName());
+            player_position_ui.setText(player.getPlayerPosition());
+            playerMail_ui.setText(player.getPlayerMail());
+            playerPhone_ui.setText(player.getPlayerPhone());
+
+
+        }
 
     }
     public void onValid (View v) {

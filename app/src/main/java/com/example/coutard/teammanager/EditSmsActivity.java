@@ -54,10 +54,7 @@ public class EditSmsActivity extends AppCompatActivity {
         } else {
             Log.d("SmsSender", "Permission accorded");
 
-
         }
-
-
     }
 
     public ArrayList<String> getPhoneNumbers(){
