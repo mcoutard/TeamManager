@@ -3,9 +3,9 @@ package com.example.coutard.teammanager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,24 +14,27 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by COUTARD on 28/12/2017.
  */
 
+/*
+Cette classe est finalement la plus importante
+C'est à partir d'ici ou on peut visionner les informations de notre équipe,
+on peut voir la liste des joueurs (toute grâce à la scrollbar
+ */
+
 public class ViewTeamActivity extends AppCompatActivity {
 
 
     private static final int PLAYER_ADD = 1;
-    private static final int CONTACT_TEAM = 2;
+    private static final int CONTACT_TEAM_EMAIL = 2;
     private static final int PLAYER_EDIT= 3;
 
 
@@ -52,29 +55,32 @@ public class ViewTeamActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_team);
 
-        Button add = (Button) findViewById(R.id.add_player_button);
-        add.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton add_player_button =  findViewById(R.id.add_player_button);
+        add_player_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickAddPlayer(v);
             }
         });
 
-        Button contact_team = (Button) findViewById(R.id.contact_team_button);
-        contact_team.setOnClickListener(new View.OnClickListener() {
+
+        Button contact_team_email = findViewById(R.id.contact_team_button_mail);
+        contact_team_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickContactTeam(v);
+                onClickContactTeamEmail(v);
             }
         });
 
-        teamName_ui = (TextView) findViewById(R.id.textViewTeamName);
-        sportName_ui = (TextView) findViewById(R.id.textViewSportName);
-        teamLeader_ui = (TextView) findViewById(R.id.textViewTeamLeader);
-        trainingDay_ui = (TextView) findViewById(R.id.textViewTrainingDay);
-        trainingHour_ui = (TextView) findViewById(R.id.textViewTrainingHour);
 
-        final ListView playersList = (ListView) findViewById(R.id.playersList);
+
+        teamName_ui = findViewById(R.id.textViewTeamName);
+        sportName_ui = findViewById(R.id.textViewSportName);
+        teamLeader_ui = findViewById(R.id.textViewTeamLeader);
+        trainingDay_ui = findViewById(R.id.textViewTrainingDay);
+        trainingHour_ui = findViewById(R.id.textViewTrainingHour);
+
+        final ListView playersList = findViewById(R.id.playersList);
 
         playersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -107,7 +113,6 @@ public class ViewTeamActivity extends AppCompatActivity {
 
             teamName_ui.setText(team.getTeamName());
             sportName_ui.setText(team.getSportName());
-            System.out.println("blabla" +team.toString());
             teamLeader_ui.setText(team.getTeamLeader());
             trainingDay_ui.setText(team.getTrainingDay());
             trainingHour_ui.setText(team.getTrainingHour());
@@ -142,8 +147,8 @@ public class ViewTeamActivity extends AppCompatActivity {
                 LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.player_item, null);
                 holder = new ViewTeamActivity.PlayerAdapter.PlayerHolder();
-                holder.playerName = (TextView) convertView.findViewById(R.id.player_name);
-                holder.playerPosition = (TextView) convertView.findViewById(R.id.player_position    );
+                holder.playerName = convertView.findViewById(R.id.player_name);
+                holder.playerPosition = convertView.findViewById(R.id.player_position );
                 convertView.setTag(holder);
             } else {
                 holder = (ViewTeamActivity.PlayerAdapter.PlayerHolder) convertView.getTag();
@@ -160,12 +165,13 @@ public class ViewTeamActivity extends AppCompatActivity {
         startActivityForResult(intent, PLAYER_ADD);
     }
 
-    public void onClickContactTeam(View v){
-        Intent intent = new Intent(this, EditSmsActivity.class);
-        intent.putExtra("team",team);
-        startActivityForResult(intent, CONTACT_TEAM);
-    }
 
+
+    public void onClickContactTeamEmail(View v){
+        Intent intent = new Intent(this, EditEmailActivity.class);
+        intent.putExtra("team",team);
+        startActivityForResult(intent, CONTACT_TEAM_EMAIL);
+    }
 
 
 
@@ -183,7 +189,7 @@ public class ViewTeamActivity extends AppCompatActivity {
             Log.d ("ViewTeamActivity", team.toString());
         }
 
-        if (requestCode == CONTACT_TEAM && resultCode == RESULT_OK) {
+        if (requestCode == CONTACT_TEAM_EMAIL && resultCode == RESULT_OK) {
             adapter.notifyDataSetChanged();
             Log.d ("MainActivity", team.toString());
         }

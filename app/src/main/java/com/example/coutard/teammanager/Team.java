@@ -10,6 +10,11 @@ import java.util.List;
  * Created by COUTARD on 27/12/2017.
  */
 
+/*
+Cette méthode nous sert pour créer de nouvelles équipes .
+Elle implémente Parcelable
+ */
+
 public class Team implements Parcelable {
 
 
@@ -20,10 +25,6 @@ public class Team implements Parcelable {
     private String training_hour;
     private List<Player> players;
 
-    public Team(){
-        players = new ArrayList<Player>() ;
-        addPlayer(new Player(team_leader));
-    }
 
 
     protected Team(String team_name, String sport_name, String team_leader, String training_day, String training_hour) {
@@ -85,6 +86,10 @@ public class Team implements Parcelable {
                 ", players=" + players +
                 '}';
     }
+
+    /*
+    Les prochaines méthodes correspondent aux méthodes obligatoires pour utiliser Parcelable
+     */
 
 
     @Override

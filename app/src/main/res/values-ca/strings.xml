@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Equip Manager</string>
+    <string name="add_player">Afegeix jugador</string>
+    <string name="add_team">afegiu equip</string>
+    <string name="age">edat</string>
+    <string name="back_button">Esquena</string>
+    <string name="cancel_button">cancel-lar</string>
+    <string name="contact_team_button">contacte equip</string>
+    <string name="contact_team_button_Mail">equip de correu electrònic</string>
+    <string name="create_player">"crea un jugador "</string>
+    <string name="degree">grau</string>
+    <string name="EnterYourMessage">"Introduïu el vostre missatge "</string>
+    <string name="EnterYourSubject">" Introduïu el vostre tema"</string>
+    <string name="firstname">Nom</string>
+    <string name="lastname">Cognom</string>
+    <string name="Message_text_hint">"Escriu el teu missatge "</string>
+    <string name="name">Nom</string>
+    <string name="playerMailAdress">"Correu electrònic "</string>
+    <string name="playerName">"Nom del jugador "</string>
+    <string name="playerPhone">"Número de telèfon "</string>
+    <string name="playerPosition">"Posició del jugador "</string>
+    <string name="PLAYERS">AGENTS</string>
+    <string name="send">enviar</string>
+    <string name="sport_name">"Nom de l'esport "</string>
+    <string name="team_leader">" Líder de l'equip"</string>
+    <string name="team_name">"Nom de l'equip "</string>
+    <string name="TeamLeader2Points">"Líder : "</string>
+    <string name="TeamName2Points">"Nom : "</string>
+    <string name="TeamSport2Points">"Esport : "</string>
+    <string name="training_day">"Dia d'entrenament "</string>
+    <string name="training_hour">"Hora de formació "</string>
+    <string name="TrainingDay2Points">"Dia d'entrenament : "</string>
+    <string name="TrainingHour2Points">"Hora de formació: "</string>
+    <string name="valid_button">Vàlid</string>
+    <string name="ChooseAMailClient">Trieu un client de correu electrònic</string>
+    <string name="EnterYourMail">Trieu un correu electrònic</string>
+    <string name="EnterPlayerName">Introduïu el nom del jugador</string>
+    <string name="EnterNameTeam">Introduïu el nom de l\'equip</string>
+    <string name="EnterSportName">Introdueix l\'esport</string>
+    <string name="EnterLeader">Introduïu el capità d\'equip</string>
+    <string-array name="days_of_the_week">
+        <item>Dilluns</item>
+        <item>Dimarts</item>
+        <item>Dimecres</item>
+        <item>Dijous</item>
+        <item>Divendres</item>
+        <item>Dissabte</item>
+        <item>Diumenge</item>
+    </string-array>
+</resources>

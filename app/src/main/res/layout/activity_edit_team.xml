@@ -57,15 +57,6 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/valid_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:onClick="onValid"
-            android:text="@string/valid_button" />
-
-        <Button
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,6 +64,15 @@
             android:layout_weight="1"
             android:onClick="onCancel"
             android:text="@string/cancel_button" />
+
+        <Button
+            android:id="@+id/valid_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:onClick="onValid"
+            android:text="@string/valid_button" />
 
     </LinearLayout>
 

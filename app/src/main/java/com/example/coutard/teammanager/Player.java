@@ -7,6 +7,10 @@ import android.os.Parcelable;
  * Created by COUTARD on 31/12/2017.
  */
 
+/*
+Cette classe nous sert à définir ce qu'est un joueur et à pouvoir effectuer des actions dessus.
+ */
+
 public class Player implements Parcelable {
 
     private String playerName;
@@ -68,6 +72,11 @@ public class Player implements Parcelable {
         else
             return "";
     }
+
+
+    /*
+    Les prochaines méthodes correspondent aux méthodes obligatoires pour utiliser Parcelable
+     */
 
     @Override
     public int describeContents() {

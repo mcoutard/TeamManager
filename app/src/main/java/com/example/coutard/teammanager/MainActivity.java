@@ -27,6 +27,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Cette vue est la vue principale , et j'ai décidé d'y afficher ma liste d'équipes
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int TEAM_ADD = 1;
@@ -40,11 +44,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         teams = new Teams();
         teams.populate ();
 
-        Button add = (Button) findViewById(R.id.add_team_button);
+        Button add = findViewById(R.id.add_team_button);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,13 +55,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ListView teamslist = (ListView) findViewById(R.id.team_list);
+        ListView teamslist = findViewById(R.id.team_list);
         adapter = new TeamAdapter(this, teams.getTeams());
-        teamslist.setAdapter(adapter);
+        teamslist.setAdapter(adapter);//Les cases de ma listes seront custom grâce à mon TeamAdapter
         teamslist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("ici");
+        //Lorsque l'utilisateur clique sur une case, c'est ici que j'envoie mes informations de la case
+        // vers mon ViewTeamActivity
                 Intent intent = new Intent(MainActivity.this, ViewTeamActivity.class);
                 intent.putExtra("team", teams.getTeams().get((int) id));
                 intent.putExtra("id", id);
@@ -68,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         teamslist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, final View view, int position, final long id) {
+                //Ici je gère la suppression des cases.
                 view.animate().setDuration(2000).alpha(0).withEndAction(new Runnable() {
                     @Override
                     public void run() {
@@ -83,7 +88,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void onClickAdd (View v) {
+        Intent intent = new Intent(this, EditTeamActivity.class);
+        startActivityForResult(intent, TEAM_ADD);
+    }
 
+/*
+Dans mon TeamAdapter je customise mes cases
+Il a simplement besoin d'un constructeur et d'un getView()
+ */
     private class TeamAdapter extends ArrayAdapter<Team> {
 
         public TeamAdapter(@NonNull Context context, @NonNull List<Team> objects) {
@@ -119,10 +132,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void onClickAdd (View v) {
-        Intent intent = new Intent(this, EditTeamActivity.class);
-        startActivityForResult(intent, TEAM_ADD);
-    }
+
 
 
 
@@ -130,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //Ici on gère l'action de recevoir une nouvelle équipe
         if (requestCode == TEAM_ADD && resultCode == RESULT_OK) {
-//HM PARCELABLE maintenant si EditContact envoye un contact dans l'intent on peut faire Contact c = data.getParcelable ("contact");
             String teamName = data.getStringExtra("teamName");
             String sportName = data.getStringExtra("sportName");
             String teamLeader = data.getStringExtra("teamLeader");
@@ -141,12 +151,13 @@ public class MainActivity extends AppCompatActivity {
             teams.addTeam(team);
             System.out.println(team.toString());
             adapter.notifyDataSetChanged();
-            Log.d ("MainActivity", team.toString());
         }
+        //Ici on gère l'action de la modification d'une liste
         if (requestCode == TEAM_VIEW && resultCode == RESULT_OK) {
+            //On commence par supprimer la liste avant changement
             long id = data.getLongExtra("id", -1);
             teams.getTeams().remove((int) id);
-//HM PARCELABLE idem que pour ADD
+            //Puis on ajoute la liste après changement
             String teamName = data.getStringExtra("teamName");
             String sportName = data.getStringExtra("sportName");
             String teamLeader = data.getStringExtra("teamLeader");
@@ -156,11 +167,11 @@ public class MainActivity extends AppCompatActivity {
             Team team = new Team(teamName, sportName, teamLeader, trainingDay, trainingHour, players);
             teams.addTeam(team);
             adapter.notifyDataSetChanged();
-            Log.d ("MainActivity", team.toString());
         }
 
     }
 
+    //Cette méthode est juste utile pour utiliser le bouton du téléphone en bas à gauche.
     @Override
     public void onBackPressed() {
         super.onBackPressed();

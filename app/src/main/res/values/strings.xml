@@ -14,7 +14,7 @@
     <string name="add_team">Add Team</string>
     <string name="training_day">Training Day</string>
     <string name="training_hour">Training Hour</string>
-    <string name="spinner_title">spinner_title</string>
+    <string name="spinner_title" translatable="false">spinner_title</string>
     <string name="back_button">BACK</string>
     <string name="add_player">Add Player</string>
     <string name="TeamName2Points">Name : </string>
@@ -29,6 +29,16 @@
     <string name="contact_team_button">Contact Team</string>
     <string name="send">send</string>
     <string name="Message_text_hint">Write your message</string>
+    <string name="contact_team_button_Mail">Mail Team</string>
+    <string name="PLAYERS">PLAYERS</string>
+    <string name="EnterYourMail">Enter your email adress please</string>
+    <string name="EnterYourSubject">Enter your subject please</string>
+    <string name="EnterYourMessage">Enter your message please</string>
+    <string name="ChooseAMailClient">Choose A Mail Client Please</string>
+    <string name="EnterPlayerName">Enter the name of the Player</string>
+    <string name="EnterNameTeam">Enter the name of the Team</string>
+    <string name="EnterSportName">Enter the Sport</string>
+    <string name="EnterLeader">Enter the name of the Leader</string>
     <string-array name="days_of_the_week">
         <item>Monday</item>
         <item>Tuesday</item>
