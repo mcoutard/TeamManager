@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TeamManager</string>
+    <string name="name">Name</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="age">Age</string>
+    <string name="degree">Degree</string>
+    <string name="create_player">Create Player</string>
+    <string name="team_name">Team Name</string>
+    <string name="sport_name">Sport Name</string>
+    <string name="team_leader">Team Leader</string>
+    <string name="cancel_button">CANCEL</string>
+    <string name="valid_button">VALID</string>
+    <string name="add_team">Add Team</string>
+    <string name="training_day">Training Day</string>
+    <string name="training_hour">Training Hour</string>
+    <string name="back_button">BACK</string>
+    <string name="add_player">Add Player</string>
+    <string name="TeamName2Points">"Name : "</string>
+    <string name="TeamSport2Points">"Sport : "</string>
+    <string name="TeamLeader2Points">"Leader : "</string>
+    <string name="TrainingDay2Points">"Training Day : "</string>
+    <string name="TrainingHour2Points">"Training Hour : "</string>
+    <string name="playerName">Player Name</string>
+    <string name="playerPosition">"Player Position "</string>
+    <string name="playerMailAdress">"Mail Adress "</string>
+    <string name="playerPhone">Phone Number</string>
+    <string name="contact_team_button">Contact Team</string>
+    <string name="send">Send</string>
+    <string name="Message_text_hint">Write your message</string>
+    <string name="contact_team_button_Mail">Mail Team</string>
+    <string name="PLAYERS">PLAYERS</string>
+    <string name="EnterYourMail">Enter your email</string>
+    <string name="EnterYourSubject">Enter your subject</string>
+    <string name="EnterYourMessage">Enter your message</string>
+    <string name="ChooseAMailClient">Choose a mail client</string>
+    <string name="EnterPlayerName">Enter the name of the player</string>
+    <string name="EnterNameTeam">Enter the name of the team</string>
+    <string name="EnterSportName">Enter the sport</string>
+    <string name="EnterLeader">Enter the name of the leader</string>
+    <string-array name="days_of_the_week">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wenesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+</resources>

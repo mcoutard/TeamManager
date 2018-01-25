@@ -23,7 +23,7 @@
     <string name="TrainingDay2Points">"Jour d'entrainement : "</string>
     <string name="TrainingHour2Points">"Heure d'entrainement : "</string>
     <string name="playerName">Nom de joueur</string>
-    <string name="playerPosition">Rôle du joueur :</string>
+    <string name="playerPosition">Rôle du joueur</string>
     <string name="playerMailAdress">Adresse Mail</string>
     <string name="playerPhone">Numéro de téléphone</string>
     <string name="contact_team_button">Contacter l\'équipe</string>
